@@ -1,0 +1,22 @@
+%p{style: 'color: green'}= notice
+
+%h1= @article.title
+
+%dl
+  %dt タイトル
+  %dd= @article.title
+
+  %dt 本文
+  %dd= simple_format(@article.body)
+
+  %dt 公開状態
+  %dd= @article.published_at.present? ? "公開中 (#{l(@article.published_at)})" : '下書き'
+
+  %dt 作成日時
+  %dd= l(@article.created_at)
+
+  %dt 更新日時
+  %dd= l(@article.updated_at)
+
+= link_to '編集', edit_admins_article_path(@article)
+= link_to '一覧に戻る', admins_articles_path

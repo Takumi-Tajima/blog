@@ -1,0 +1,22 @@
+%h1 記事一覧
+
+= link_to '新規作成', new_admins_article_path
+
+%table
+  %thead
+    %tr
+      %th ID
+      %th タイトル
+      %th 公開状態
+      %th 作成日時
+      %th 操作
+  %tbody
+    - @articles.each do |article|
+      %tr
+        %td= article.id
+        %td= article.title
+        %td= article.published_at.present? ? '公開中' : '下書き'
+        %td= l(article.created_at, format: :short)
+        %td
+          = link_to '詳細', admins_article_path(article)
+          = link_to '編集', edit_admins_article_path(article)

@@ -1,0 +1,23 @@
+= form_with model: [:admins, article] do |f|
+  - if article.errors.any?
+    #error_explanation
+      %h2= "#{article.errors.count}件のエラーがあります"
+      %ul
+        - article.errors.full_messages.each do |message|
+          %li= message
+
+  %div
+    = f.label :title, 'タイトル'
+    = f.text_field :title
+
+  %div
+    = f.label :body, '本文'
+    = f.text_area :body, rows: 10
+
+  %div
+    = f.label :published_at, '公開日時'
+    = f.datetime_field :published_at
+    %p 空欄の場合は下書きとして保存されます
+
+  %div
+    = f.submit
