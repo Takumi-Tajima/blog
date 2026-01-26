@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+production:
+  <<: *default
+  database: sg_app_tech_blog
+  username: sg_app_tech_blog
+  host: <%= Rails.application.credentials.dig(:kamaly, :db, :host) %>
+  password: <%= Rails.application.credentials.dig(:kamaly, :db, :pass) %>
