@@ -1,13 +1,9 @@
-%div{id: dom_id(article)}
-  %p
-    %strong Title:
-    = article.title
-
-  %p
-    %strong Body:
-    = article.body
-
-  %p
-    %strong Published at:
-    = article.published_at
-
+= link_to article_path(article), class: 'block' do
+  %div{id: dom_id(article), class: 'flex bg-white rounded-lg shadow overflow-hidden h-40'}
+    %div{class: 'w-1/3 bg-gray-200 flex items-center justify-center'}
+      %span.text-gray-400.text-sm No Image
+    %div{class: 'w-2/3 p-4 flex flex-col'}
+      %h2.text-lg.font-semibold.text-gray-800= article.title
+      %p.text-sm.text-gray-600.mt-2.line-clamp-2= truncate(article.body, length: 30)
+      %p.text-sm.text-gray-500.mt-auto
+        = article.published_at&.strftime('%Y年%m月%d日') || article.created_at.strftime('%Y年%m月%d日')

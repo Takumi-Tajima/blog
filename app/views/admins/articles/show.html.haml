@@ -1,22 +1,25 @@
-%p{style: 'color: green'}= notice
+- if notice.present?
+  %p.text-green-600.mb-4= notice
 
-%h1= @article.title
+.max-w-3xl.mx-auto
+  %h1.text-3xl.font-bold.text-gray-800= @article.title
 
-%dl
-  %dt タイトル
-  %dd= @article.title
+  %dl.mt-6.space-y-4
+    .flex
+      %dt.w-24.font-semibold.text-gray-600 公開状態
+      %dd.text-gray-800= @article.published_at.present? ? "公開中 (#{l(@article.published_at)})" : '下書き'
 
-  %dt 本文
-  %dd= simple_format(@article.body)
+    .flex
+      %dt.w-24.font-semibold.text-gray-600 作成日時
+      %dd.text-gray-800= l(@article.created_at)
 
-  %dt 公開状態
-  %dd= @article.published_at.present? ? "公開中 (#{l(@article.published_at)})" : '下書き'
+    .flex
+      %dt.w-24.font-semibold.text-gray-600 更新日時
+      %dd.text-gray-800= l(@article.updated_at)
 
-  %dt 作成日時
-  %dd= l(@article.created_at)
+  .mt-8.text-gray-700.leading-relaxed
+    = simple_format(@article.body)
 
-  %dt 更新日時
-  %dd= l(@article.updated_at)
-
-= link_to '編集', edit_admins_article_path(@article)
-= link_to '一覧に戻る', admins_articles_path
+  .mt-8.space-x-4
+    = link_to '編集', edit_admins_article_path(@article), class: 'text-blue-600 hover:underline'
+    = link_to '一覧に戻る', admins_articles_path, class: 'text-gray-600 hover:underline'

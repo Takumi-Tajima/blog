@@ -1,6 +1,7 @@
-%h1 記事編集
+%h1.text-2xl.font-bold.mb-6 記事編集
 
 = render 'form', article: @article
 
-= link_to '詳細に戻る', admins_article_path(@article)
-= link_to '一覧に戻る', admins_articles_path
+.mt-6.space-x-4
+  = link_to '詳細に戻る', admins_article_path(@article), class: 'text-blue-600 hover:underline'
+  = link_to '一覧に戻る', admins_articles_path, class: 'text-gray-600 hover:underline'

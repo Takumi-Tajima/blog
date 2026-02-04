@@ -1,5 +1,6 @@
-%h1 新規記事作成
+%h1.text-2xl.font-bold.mb-6 新規記事作成
 
 = render 'form', article: @article
 
-= link_to '一覧に戻る', admins_articles_path
+.mt-6
+  = link_to '一覧に戻る', admins_articles_path, class: 'text-gray-600 hover:underline'

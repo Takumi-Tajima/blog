@@ -1,22 +1,22 @@
-%h1 記事一覧
+%h1.text-2xl.font-bold.mb-6 記事一覧
 
-= link_to '新規作成', new_admins_article_path
+= link_to '新規作成', new_admins_article_path, class: 'inline-block mb-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700'
 
-%table
-  %thead
+%table.w-full.border-collapse
+  %thead.bg-gray-100
     %tr
-      %th ID
-      %th タイトル
-      %th 公開状態
-      %th 作成日時
-      %th 操作
+      %th.border.px-4.py-2.text-left ID
+      %th.border.px-4.py-2.text-left タイトル
+      %th.border.px-4.py-2.text-left 公開状態
+      %th.border.px-4.py-2.text-left 作成日時
+      %th.border.px-4.py-2.text-left 操作
   %tbody
     - @articles.each do |article|
-      %tr
-        %td= article.id
-        %td= article.title
-        %td= article.published_at.present? ? '公開中' : '下書き'
-        %td= l(article.created_at, format: :short)
-        %td
-          = link_to '詳細', admins_article_path(article)
-          = link_to '編集', edit_admins_article_path(article)
+      %tr.hover:bg-gray-50
+        %td.border.px-4.py-2= article.id
+        %td.border.px-4.py-2= article.title
+        %td.border.px-4.py-2= article.published_at.present? ? '公開中' : '下書き'
+        %td.border.px-4.py-2= l(article.created_at, format: :short)
+        %td.border.px-4.py-2
+          = link_to '詳細', admins_article_path(article), class: 'text-blue-600 hover:underline mr-2'
+          = link_to '編集', edit_admins_article_path(article), class: 'text-blue-600 hover:underline'
