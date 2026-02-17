@@ -10,6 +10,7 @@ gem 'jsbundling-rails'
 gem 'pg'
 gem 'propshaft'
 gem 'puma'
+gem 'redcarpet'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 
