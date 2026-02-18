@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root 'articles#index'
-    resources :articles, only: %i[index show new edit create update]
+    resources :articles, only: %i[index show new edit create update destroy]
   end
 
   resources :articles, only: %i[index show]

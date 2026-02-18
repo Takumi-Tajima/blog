@@ -1,5 +1,5 @@
 class Admins::ArticlesController < Admins::ApplicationController
-  before_action :set_article, only: %i[show edit update]
+  before_action :set_article, only: %i[show edit update destroy]
 
   def index
     @articles = Article.default_order
@@ -31,6 +31,11 @@ class Admins::ArticlesController < Admins::ApplicationController
     else
       render :edit, status: :unprocessable_content
     end
+  end
+
+  def destroy
+    @article.destroy!
+    redirect_to admins_articles_path, notice: '記事を削除しました。'
   end
 
   private
